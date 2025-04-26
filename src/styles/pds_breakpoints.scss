@@ -1,0 +1,24 @@
+// pds_breakpoints.scss
+
+// PDS Breakpoint Variables
+$pds_breakpoint-small: 0;        // 0-500px
+$pds_breakpoint-large: 501px;    // 501px and above
+
+// mixin for media queries
+@mixin respond-to($pds_breakpoint) {
+  @if $pds_breakpoint == small {
+    @media (min-width: $pds_breakpoint-small) and (max-width: ($pds_breakpoint-large - 1px)) {
+      @content;
+    }
+  } @else if $pds_breakpoint == large {
+    @media (min-width: $pds_breakpoint-large) {
+      @content;
+    }
+  } @else if type-of($pds_breakpoint) == number {
+    @media (min-width: $pds_breakpoint) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint #{$pds_breakpoint} doesn't exist.";
+  }
+}

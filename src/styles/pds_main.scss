@@ -1,0 +1,151 @@
+// src/styles/styles.scss
+
+@use "pds_breakpoints" as *;
+@use "pds_colors" as *;
+@use "pds_typography" as *;
+:root {
+  --pds-party-1-border-color: #d50200;
+  --pds-party-2-border-color: #2763ba;
+}
+
+body {
+  // Apply page styles as specified
+  background-color: $pds-grey-1-color;
+  font-family: $pds-font-stack;
+
+  @include respond-to(small) {
+    padding: 30px 15px;
+  }
+
+  @include respond-to(large) {
+    padding-top: 30px;
+  }
+
+  .card {
+    background-color: $pds-background-color;
+    border-width: 0 0 0 5px;
+    border-style: solid;
+    border-color: $pds-brand-color;
+    display: flex;
+    flex-direction: column; // Stack on large
+    padding: 0 20px;
+
+    @include respond-to(small) {
+      width: 100%;
+      box-sizing: border-box; //padding within the width
+      border-width: 5px 0 0 0;
+      flex-direction: row; // Adjacent on small
+      align-items: flex-start; // Align items to the top
+      padding: 0 15px;
+    }
+
+    @include respond-to(large) {
+      width: 450px;
+      margin: 0 auto;
+    }
+
+    .image-container {
+      overflow: hidden;
+      margin: 20px 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      border: 5px solid;
+
+      @include respond-to(small) {
+        width: 60px;
+        height: 60px;
+        border-radius: 60px;
+        border: 5px solid;
+        margin-right: 15px;
+        margin: 15px 0;
+        flex-shrink: 0; // Prevent image from shrinking
+      }
+
+      @include respond-to(large) {
+        // No specific large styles needed here based on original
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .details-container {
+      display: flex;
+      flex-direction: column;
+
+      @include respond-to(small) {
+        margin-top: 15px;
+        padding-left: 20px;
+      }
+
+      .party-name {
+        color: $pds-grey-2-color;
+        font-weight: normal;
+        margin-bottom: 20px;
+
+        @include respond-to(small) {
+          font-size: 16px;
+          line-height: 1.2rem;
+          margin-bottom: 5px;
+        }
+
+        @include respond-to(large) {
+          font-size: 22px;
+          line-height: 1.35rem;
+        }
+      }
+
+      .name {
+        color: $pds-brand-color;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+
+        @include respond-to(small) {
+          font-size: 20px;
+          line-height: 1.1rem;
+          margin-bottom: 15px;
+        }
+
+        @include respond-to(large) {
+          font-size: 30px;
+          line-height: 1.25rem;
+        }
+      }
+
+      .constituency {
+        color: $pds-grey-2-color;
+        font-size: 18px;
+        line-height: 1.5rem;
+        display: inline-block;
+        margin-bottom: 20px;
+
+        @include respond-to(small) {
+          font-size: 14px;
+          line-height: 1.3rem;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .no-longer-serving {
+      color: $pds-alert-color;
+      background-color: $pds-grey-1-color;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 1.3rem;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+
+      @include respond-to(small) {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px; // Add some top margin for spacing
+      }
+    }
+  }
+}
